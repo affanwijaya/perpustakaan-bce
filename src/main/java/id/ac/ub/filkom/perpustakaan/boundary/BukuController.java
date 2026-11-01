@@ -18,6 +18,12 @@ public class BukuController {
         this.bukuService = bukuService;
     }
 
+    // GET http://localhost:8080/ -> halaman utama diarahkan ke daftar buku
+    @GetMapping("/")
+    public String beranda() {
+        return "redirect:/buku";
+    }
+
     // GET http://localhost:8080/buku?kata=java
     @GetMapping("/buku")
     public String daftarBuku(@RequestParam(required = false) String kata,
