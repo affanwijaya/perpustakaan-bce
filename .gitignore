@@ -1,0 +1,10 @@
+# Hasil build Maven
+target/
+
+# Pengaturan editor/IDE pribadi
+.idea/
+.vscode/
+*.iml
+
+# File sistem macOS
+.DS_Store

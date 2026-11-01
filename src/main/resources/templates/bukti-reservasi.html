@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Bukti Reservasi</title>
+</head>
+<body>
+
+<h1>Bukti Reservasi</h1>
+<table>
+    <tr><td>No. Reservasi</td><td th:text="${bukti.idReservasi}">R0001</td></tr>
+    <tr><td>Anggota</td>      <td th:text="${bukti.namaAnggota}">Nama</td></tr>
+    <tr><td>Buku</td>         <td th:text="${bukti.judulBuku}">Judul</td></tr>
+    <tr><td>Tanggal</td>      <td th:text="${bukti.tanggalReservasi}">2026-10-25</td></tr>
+    <tr><td>Status</td>       <td th:text="${bukti.status}">MENUNGGU</td></tr>
+</table>
+<a th:href="@{/pinjam}">Kembali</a>
+
+</body>
+</html>

@@ -12,9 +12,9 @@
     </parent>
 
     <groupId>id.ac.ub.filkom</groupId>
-    <artifactId>contoh-daftar-buku</artifactId>
+    <artifactId>perpustakaan</artifactId>
     <version>1.0.0</version>
-    <name>Contoh Dasar Spring Boot - Daftar Buku</name>
+    <name>Perpustakaan - Implementasi BCE</name>
 
     <properties>
         <java.version>17</java.version>

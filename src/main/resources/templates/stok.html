@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Kelola Stok Buku</title>
+</head>
+<body>
+
+<h1>Kelola Stok Buku</h1>
+<p>Halaman Pustakawan</p>
+
+<!-- Alur utama: stok berhasil diubah -->
+<p th:if="${pesanSukses}" th:text="${pesanSukses}" style="color:#1b5e20">Stok berhasil diubah</p>
+<!-- Alur alternatif: pesan gagal -->
+<p th:if="${pesan}" th:text="${pesan}" style="color:#b00020">Stok tidak boleh negatif</p>
+
+<table border="1">
+    <tr><th>ID</th><th>Judul</th><th>Stok</th><th>Tambah Stok</th><th>Kurangi Stok</th></tr>
+    <tr th:each="b : ${daftarBuku}">
+        <td th:text="${b.idBuku}">B001</td>
+        <td th:text="${b.judul}">Judul</td>
+        <td th:text="${b.stok}">0</td>
+        <td>
+            <form th:action="@{/stok/tambah}" method="post">
+                <input type="hidden" name="idBuku" th:value="${b.idBuku}">
+                <input type="number" name="jumlah" min="1" value="1" required style="width:60px">
+                <button type="submit">Tambah</button>
+            </form>
+        </td>
+        <td>
+            <form th:action="@{/stok/kurangi}" method="post">
+                <input type="hidden" name="idBuku" th:value="${b.idBuku}">
+                <input type="number" name="jumlah" min="1" value="1" required style="width:60px">
+                <button type="submit">Kurangi</button>
+            </form>
+        </td>
+    </tr>
+</table>
+
+<p><a th:href="@{/buku}">← Ke Daftar Buku</a></p>
+
+</body>
+</html>

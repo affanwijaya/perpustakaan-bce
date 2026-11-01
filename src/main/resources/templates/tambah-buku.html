@@ -1,24 +1,24 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
--->
-<html>
-    
-    <body>
-        <h1> Form Buku</h1>
-        <form th:action="@{/buku}" method="post">
-            <table>
-                <tr><td>Id</td><td>:</td><td><input name="idBuku" placeholder="ID" required></td></tr>
-                <tr><td>Judul</td><td>:</td><td><input name="judul" placeholder="Judul" required></td></tr>
-                <tr><td>Stok</td><td>:</td><td><input name="stok" type="number" min="0" value="1"></td></tr>
-                <tr><td><button type="cancel">Batal</button></td><td></td><td><button type="submit">Simpan</button></td></tr>
-                
-            </table>
-            
-           
-            
-            
-        </form>
-    </body>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Tambah Buku</title>
+</head>
+<body>
+
+<h1>Form Buku</h1>
+
+<!-- Alur alternatif: pesan gagal -->
+<p th:if="${pesan}" th:text="${pesan}" style="color:#b00020">ID buku sudah dipakai</p>
+
+<form th:action="@{/buku}" method="post">
+    <table>
+        <tr><td>Id</td><td>:</td><td><input name="idBuku" th:value="${idBuku}" placeholder="ID" maxlength="10" required></td></tr>
+        <tr><td>Judul</td><td>:</td><td><input name="judul" th:value="${judul}" placeholder="Judul" maxlength="200" required></td></tr>
+        <tr><td>Stok</td><td>:</td><td><input name="stok" type="number" min="0" th:value="${stok != null} ? ${stok} : 1" required></td></tr>
+        <tr><td><button type="button" onclick="window.location.href='/buku'">Batal</button></td><td></td><td><button type="submit">Simpan</button></td></tr>
+    </table>
+</form>
+
+</body>
 </html>

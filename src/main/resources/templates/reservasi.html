@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajukan Reservasi</title>
+</head>
+<body>
+
+<h1>Ajukan Reservasi</h1>
+<p>Anggota: <b th:text="${idAnggota}">A001</b></p>
+
+<!-- Alur alternatif: pesan gagal -->
+<p th:if="${pesan}" th:text="${pesan}" style="color:#b00020">Anda sudah mengajukan reservasi untuk buku ini</p>
+
+<div th:if="${buku}">
+    <p>Stok buku berikut sedang habis. Ajukan reservasi agar Anda mendapat giliran saat buku tersedia.</p>
+    <table>
+        <tr><td>ID Buku</td><td th:text="${buku.idBuku}">B002</td></tr>
+        <tr><td>Judul</td>  <td th:text="${buku.judul}">Judul</td></tr>
+        <tr><td>Stok</td>   <td th:text="${buku.stok}">0</td></tr>
+    </table>
+    <form th:action="@{/reservasi}" method="post">
+        <input type="hidden" name="idBuku" th:value="${buku.idBuku}">
+        <button type="submit">Ajukan Reservasi</button>
+    </form>
+</div>
+
+<p><a th:href="@{/pinjam}">← Kembali ke Pinjam Buku</a></p>
+
+</body>
+</html>
